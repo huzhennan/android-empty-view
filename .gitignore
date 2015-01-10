@@ -1,6 +1,4 @@
 # Created by https://www.gitignore.io
-
-### Android ###
 # Built application files
 *.apk
 *.ap_
@@ -27,7 +25,6 @@ proguard/
 
 # Log Files
 *.log
-
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
@@ -99,5 +96,3 @@ gradle-app.setting
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
-
