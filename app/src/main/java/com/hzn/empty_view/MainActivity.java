@@ -4,36 +4,46 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.hzn.emptyview.EmptyView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+    private Button mEmptyButton;
+    private Button mLoadingButton;
+    private Button mErrorButton;
+    private EmptyView mEmptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mEmptyView = (EmptyView) findViewById(R.id.empty_test);
+
+        mEmptyButton = (Button) findViewById(R.id.bt_status_empty);
+        mLoadingButton = (Button) findViewById(R.id.bt_status_loading);
+        mErrorButton = (Button) findViewById(R.id.bt_status_error);
+
+        mEmptyButton.setOnClickListener(this);
+        mLoadingButton.setOnClickListener(this);
+        mErrorButton.setOnClickListener(this);
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.bt_status_empty:
+                mEmptyView.setStatus(this, EmptyView.STATUS_EMPTY);
+                break;
+            case R.id.bt_status_loading:
+                mEmptyView.setStatus(this, EmptyView.STATUS_LOADING);
+                break;
+            case R.id.bt_status_error:
+                mEmptyView.setStatus(this, EmptyView.STATUS_ERROR);
+                break;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
