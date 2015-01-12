@@ -13,7 +13,9 @@ import com.hzn.emptyview.EmptyView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * A sample use EmptyView
+ */
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
     private Button mEmptyButton;
     private Button mLoadingButton;
@@ -88,15 +90,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.bt_status_empty:
                 mAdapter.clear();
-                mEmptyView.setStatus(this, EmptyView.STATUS_EMPTY);
+                // alse can directly use setStatus
+                //mEmptyView.setStatus(EmptyView.STATUS_EMPTY);
+                mEmptyView.showEmpty();
                 break;
             case R.id.bt_status_loading:
                 mAdapter.clear();
-                mEmptyView.setStatus(this, EmptyView.STATUS_LOADING);
+                // alse can directly use setStatus
+                //mEmptyView.setStatus(EmptyView.STATUS_LOADING);
+                mEmptyView.showLoading();
                 break;
             case R.id.bt_status_error:
                 mAdapter.clear();
-                mEmptyView.setStatus(this, EmptyView.STATUS_ERROR);
+                // alse can directly use setStatus
+                //mEmptyView.setStatus(EmptyView.STATUS_ERROR);
+                mEmptyView.showError();
                 break;
             case R.id.bt_reset:
                 mAdapter.clear();

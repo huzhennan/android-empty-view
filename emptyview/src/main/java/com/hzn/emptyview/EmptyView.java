@@ -29,12 +29,7 @@ public class EmptyView extends FrameLayout {
     private View mStatusErrorView;
     private int mStatus;
 
-    public void setTryAgainListener(OnClickListener tryAgainListener) {
-        mTryAgainListener = tryAgainListener;
-    }
-
     private OnClickListener mTryAgainListener;
-
 
     public EmptyView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -68,11 +63,6 @@ public class EmptyView extends FrameLayout {
         initWithStatus(context, mStatus);
     }
 
-    public void setStatus(Context context, int status) {
-        mStatus = status;
-        initWithStatus(context, mStatus);
-    }
-
     private void initWithStatus(Context context, int status) {
         switch (status) {
             case STATUS_EMPTY:
@@ -90,5 +80,45 @@ public class EmptyView extends FrameLayout {
             default:
                 throw new UnsupportedOperationException("no this status");
         }
+    }
+
+    /**
+     * Sets the empty view's status. with different status, display different view.
+     *
+     * @param status use EmptyView.STATUS_EMPTY EmptyView.STATUS_LOADING EmptyView.mStatusErrorView
+     */
+    public void setStatus(int status) {
+        mStatus = status;
+        initWithStatus(getContext(), mStatus);
+    }
+
+    /**
+     * set Press to try again callback
+     *
+     * @param tryAgainListener
+     */
+    public void setTryAgainListener(OnClickListener tryAgainListener) {
+        mTryAgainListener = tryAgainListener;
+    }
+
+    /**
+     * Shows the empty layout.
+     */
+    public void showEmpty() {
+        setStatus(STATUS_EMPTY);
+    }
+
+    /**
+     * Shows the loading layout.
+     */
+    public void showLoading() {
+        setStatus(STATUS_LOADING);
+    }
+
+    /**
+     * Shows the error layout.
+     */
+    public void showError() {
+        setStatus(STATUS_ERROR);
     }
 }
