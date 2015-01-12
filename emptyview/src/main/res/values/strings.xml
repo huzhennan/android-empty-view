@@ -3,5 +3,5 @@
 
     <string name="empty_message">No items yet</string>
     <string name="loading_message">Please wait</string>
-    <string name="error_message">Oops! Something wrong happened</string>
+    <string name="error_message">Oops! Something wrong happened\nPress to try again</string>
 </resources>

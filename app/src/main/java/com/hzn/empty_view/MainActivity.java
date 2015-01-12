@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private Button mErrorButton;
     private Button mResetButton;
     private EmptyView mEmptyView;
-    private ListView mTestListView;
+    private ListView mSampleListView;
     private ArrayAdapter<String> mAdapter;
 
     static List<String> DATA = new ArrayList<String>();
@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mEmptyView = (EmptyView) findViewById(R.id.empty_test);
-        mTestListView = (ListView) findViewById(R.id.list_for_test);
+        mSampleListView = (ListView) findViewById(R.id.list_sample);
         mEmptyButton = (Button) findViewById(R.id.bt_status_empty);
         mLoadingButton = (Button) findViewById(R.id.bt_status_loading);
         mErrorButton = (Button) findViewById(R.id.bt_status_error);
@@ -74,8 +74,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         mAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, android.R.id.text1, DATA);
-        mTestListView.setAdapter(mAdapter);
-        mTestListView.setEmptyView(mEmptyView);
+        mSampleListView.setAdapter(mAdapter);
+        mSampleListView.setEmptyView(mEmptyView);
 
         mEmptyButton.setOnClickListener(this);
         mLoadingButton.setOnClickListener(this);
