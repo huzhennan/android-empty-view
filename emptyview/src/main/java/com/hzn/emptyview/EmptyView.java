@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 /**
  * Created by hzn on 1/10/15.
@@ -27,6 +29,13 @@ public class EmptyView extends FrameLayout {
     private View mStatusErrorView;
     private int mStatus;
 
+    public void setTryAgainListener(OnClickListener tryAgainListener) {
+        mTryAgainListener = tryAgainListener;
+    }
+
+    private OnClickListener mTryAgainListener;
+
+
     public EmptyView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
@@ -41,6 +50,19 @@ public class EmptyView extends FrameLayout {
         mStatusEmptyView = inflate(context, R.layout.view_empty, null);
         mStatusLoadingView = inflate(context, R.layout.view_loading, null);
         mStatusErrorView = inflate(context, R.layout.view_error, null);
+
+        LinearLayout errorLayout = (LinearLayout) mStatusErrorView.findViewById(R.id.ll_error_panel);
+        errorLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mTryAgainListener != null) {
+                    mTryAgainListener.onClick(v);
+                } else {
+                    Toast.makeText(getContext(), "You need to set a callback for 'try again'!!!"
+                            , Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         mStatus = STATUS_EMPTY;
         initWithStatus(context, mStatus);
