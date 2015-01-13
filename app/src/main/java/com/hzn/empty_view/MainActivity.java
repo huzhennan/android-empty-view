@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mEmptyView.setTryAgainListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "start try....", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Try again button clicked", Toast.LENGTH_LONG).show();
             }
         });
 
